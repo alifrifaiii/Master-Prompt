@@ -2,8 +2,13 @@ function mulai() {
     document.getElementById("form").style.display = "block";
 }
 
-function buatPrompt() {
-    let tujuan = document.getElementById("tujuan").value;
+    function buatPrompt() {
+    let tujuan = document.getElementById("tujuan").value.trim();
+
+    if (tujuan === "") {
+        alert("Isi dulu bro😄");
+        return;
+    }
     let konteks = document.getElementById("konteks").value;
     let peran = document.getElementById("peran").value;
     let gaya = document.getElementById("gaya").value;
