@@ -40,45 +40,6 @@
 
     </div>
 
-    <script>
-
-        function mulai() {
-            document.getElementById("form").style.display = "block";
-        }
-
-        function buatPrompt() {
-
-            let tujuan = document.getElementById("tujuan").value;
-            let konteks = document.getElementById("konteks").value;
-            let gaya = document.getElementById("gaya").value;
-            let output = document.getElementById("output").value;
-
-            let prompt = 
-`Kamu adalah AI assistant yang membantu saya mencapai tujuan berikut:
-
-TUJUAN:
-${tujuan}
-
-KONTEKS:
-${konteks}
-
-GAYA JAWABAN:
-${gaya}
-
-FORMAT OUTPUT:
-${output}
-
-Instruksi:
-- Pahami tujuan saya sebelum menjawab.
-- Gunakan konteks yang diberikan.
-- Ikuti gaya dan format output yang saya minta.
-- Jika informasi penting belum tersedia, tanyakan terlebih dahulu.
-- Berikan jawaban yang jelas, relevan, dan praktis.`;
-
-            document.getElementById("hasil").value = prompt;
-        }
-
-    </script>
-
+<script src="script.js"></script>
 </body>
 </html>
