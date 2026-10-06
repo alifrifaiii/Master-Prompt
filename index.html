@@ -12,30 +12,71 @@
     <button onclick="mulai()">Mulai</button>
 
     <div id="form" style="display:none;">
-        <h2>Lu mau bikin prompt untuk apa?</h2>
 
-        <input 
-            id="tujuan" 
-            type="text" 
-            placeholder="Contoh: bikin script YouTube"
-        >
+        <h2>1. Tujuan</h2>
+        <p>Apa yang ingin AI bantu?</p>
+        <textarea id="tujuan" placeholder="Contoh: Saya ingin membuat script YouTube tentang sejarah..."></textarea>
 
-        <button onclick="buatPrompt()">Buat Prompt</button>
+        <h2>2. Konteks</h2>
+        <p>Informasi apa yang perlu AI tahu?</p>
+        <textarea id="konteks" placeholder="Contoh: Target penonton saya adalah Gen Z Indonesia..."></textarea>
 
-        <p id="hasil"></p>
+        <h2>3. Gaya</h2>
+        <p>Kamu mau jawaban seperti apa?</p>
+        <textarea id="gaya" placeholder="Contoh: Santai, jelas, storytelling..."></textarea>
+
+        <h2>4. Output</h2>
+        <p>Hasil akhirnya mau berbentuk apa?</p>
+        <textarea id="output" placeholder="Contoh: Script 60 detik dengan hook, isi, dan CTA..."></textarea>
+
+        <br><br>
+
+        <button onclick="buatPrompt()">Generate Master Prompt</button>
+
+        <h2>Hasil:</h2>
+
+        <textarea id="hasil" rows="15" readonly></textarea>
+
     </div>
 
     <script>
+
         function mulai() {
             document.getElementById("form").style.display = "block";
         }
 
         function buatPrompt() {
-            let tujuan = document.getElementById("tujuan").value;
 
-            document.getElementById("hasil").innerText =
-                "Tujuan kamu: " + tujuan;
+            let tujuan = document.getElementById("tujuan").value;
+            let konteks = document.getElementById("konteks").value;
+            let gaya = document.getElementById("gaya").value;
+            let output = document.getElementById("output").value;
+
+            let prompt = 
+`Kamu adalah AI assistant yang membantu saya mencapai tujuan berikut:
+
+TUJUAN:
+${tujuan}
+
+KONTEKS:
+${konteks}
+
+GAYA JAWABAN:
+${gaya}
+
+FORMAT OUTPUT:
+${output}
+
+Instruksi:
+- Pahami tujuan saya sebelum menjawab.
+- Gunakan konteks yang diberikan.
+- Ikuti gaya dan format output yang saya minta.
+- Jika informasi penting belum tersedia, tanyakan terlebih dahulu.
+- Berikan jawaban yang jelas, relevan, dan praktis.`;
+
+            document.getElementById("hasil").value = prompt;
         }
+
     </script>
 
 </body>
