@@ -43,7 +43,7 @@ async function buatPrompt() {
 
         if (!response.ok) {
             console.log(data);
-            hasil.value = "Terjadi error saat menghubungi AI.";
+            hasil.value = data.error?.error?.message || data.error?.message || "Terjadi error saat menghubungi AI.";
             return;
         }
 
