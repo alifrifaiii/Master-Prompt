@@ -88,3 +88,8 @@ button:hover {
 .chips button:hover {
     background: #e0e7ff;
 }
+.chips button.active {
+    background: #22c55e;
+    color: white;
+    border-color: #22c55e;
+}
