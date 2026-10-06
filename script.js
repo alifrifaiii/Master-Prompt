@@ -5,6 +5,7 @@ function mulai() {
 function buatPrompt() {
     let tujuan = document.getElementById("tujuan").value;
     let konteks = document.getElementById("konteks").value;
+    let peran = document.getElementById("peran").value;
     let gaya = document.getElementById("gaya").value;
     let output = document.getElementById("output").value;
 
@@ -15,6 +16,9 @@ ${tujuan}
 
 KONTEKS:
 ${konteks}
+
+PERAN AI:
+${peran}
 
 GAYA JAWABAN:
 ${gaya}
