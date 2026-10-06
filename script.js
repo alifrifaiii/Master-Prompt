@@ -1,4 +1,3 @@
-let gayaDipilih = [];
 function mulai() {
     document.getElementById("form").style.display = "block";
 }
@@ -41,11 +40,22 @@ function copyPrompt() {
     alert("Prompt berhasil disalin! 🚀");
 }
 
+let gayaDipilih = [];
+
 function pilihGaya(gaya) {
     if (gayaDipilih.includes(gaya)) {
         gayaDipilih = gayaDipilih.filter(item => item !== gaya);
     } else {
         gayaDipilih.push(gaya);
     }
+
     document.getElementById("gaya").value = gayaDipilih.join(", ");
+
+    document.querySelectorAll(".chips button").forEach(button => {
+        if (gayaDipilih.includes(button.textContent)) {
+            button.classList.add("active");
+        } else {
+            button.classList.remove("active");
+        }
+    });
 }
