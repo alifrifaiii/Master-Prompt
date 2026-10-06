@@ -39,3 +39,7 @@ function copyPrompt() {
     navigator.clipboard.writeText(hasil.value);
     alert("Prompt berhasil disalin! 🚀");
 }
+
+function pilihGaya(gaya) {
+    document.getElementById("gaya").value = gaya;
+}
