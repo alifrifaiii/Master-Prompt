@@ -2,65 +2,91 @@ function mulai() {
     document.getElementById("form").style.display = "block";
 }
 
-    function buatPrompt() {
+async function buatPrompt() {
     let tujuan = document.getElementById("tujuan").value.trim();
 
     if (tujuan === "") {
-        alert("Isi dulu bro😄");
+        alert("Isi dulu bro 😅");
         return;
     }
+
     let konteks = document.getElementById("konteks").value;
     let peran = document.getElementById("peran").value;
     let gaya = document.getElementById("gaya").value;
     let output = document.getElementById("output").value;
 
-    let prompt = `Kamu adalah AI assistant yang membantu saya.
+    let hasil = document.getElementById("hasil");
 
-TUJUAN:
-${tujuan}
+    hasil.value = "AI sedang membuat prompt... 🤖";
 
-KONTEKS:
-${konteks}
+    try {
+        const response = await fetch(
+            "https://rifprompt-api.muhammadalifrifai334.workers.dev/",
+            {
+                method: "POST",
 
-PERAN AI:
-${peran}
+                headers: {
+                    "Content-Type": "application/json"
+                },
 
-GAYA JAWABAN:
-${gaya}
+                body: JSON.stringify({
+                    tujuan: tujuan,
+                    konteks: konteks,
+                    peran: peran,
+                    gaya: gaya,
+                    output: output
+                })
+            }
+        );
 
-FORMAT OUTPUT:
-${output}
+        const data = await response.json();
 
-INSTRUKSI:
-- Pahami tujuan saya.
-- Gunakan konteks yang diberikan.
-- Ikuti gaya dan format yang diminta.
-- Berikan jawaban yang jelas dan relevan.`;
+        if (!response.ok) {
+            console.log(data);
+            hasil.value = "Terjadi error saat menghubungi AI.";
+            return;
+        }
 
-    document.getElementById("hasil").value = prompt;
+        hasil.value = data.hasil || "AI tidak memberikan hasil.";
+
+    } catch (error) {
+        console.error(error);
+        hasil.value = "Gagal terhubung ke server.";
+    }
 }
+
+
 function copyPrompt() {
     let hasil = document.getElementById("hasil");
+
     navigator.clipboard.writeText(hasil.value);
-    alert("Prompt berhasil disalin! 🚀");
+
+    alert("Prompt berhasil disalin 🚀");
 }
+
 
 let gayaDipilih = [];
 
 function pilihGaya(gaya) {
+
     if (gayaDipilih.includes(gaya)) {
-        gayaDipilih = gayaDipilih.filter(item => item !== gaya);
+        gayaDipilih = gayaDipilih.filter(
+            item => item !== gaya
+        );
     } else {
         gayaDipilih.push(gaya);
     }
 
-    document.getElementById("gaya").value = gayaDipilih.join(", ");
+    document.getElementById("gaya").value =
+        gayaDipilih.join(", ");
 
     document.querySelectorAll(".chips button").forEach(button => {
+
         if (gayaDipilih.includes(button.textContent)) {
             button.classList.add("active");
         } else {
             button.classList.remove("active");
         }
+
     });
 }
