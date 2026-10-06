@@ -27,8 +27,17 @@
         <textarea id="peran" placeholder="Contoh: Ahli sejarah dan content strategist..."></textarea>
         
         <h2>4. Gaya</h2>
-        <p>Kamu mau jawaban seperti apa?</p>
-        <textarea id="gaya" placeholder="Contoh: Santai, jelas, storytelling..."></textarea>
+        <p>Pilih gaya jawaban</p>
+
+<div class="chips">
+    <button type="button" onclick="pilihGaya('Santai')">Santai</button>
+    <button type="button" onclick="pilihGaya('Profesional')">Profesional</button>
+    <button type="button" onclick="pilihGaya('Storytelling')">Storytelling</button>
+    <button type="button" onclick="pilihGaya('Singkat')">Singkat</button>
+    <button type="button" onclick="pilihGaya('Detail')">Detail</button>
+</div>
+
+<textarea id="gaya" placeholder="Atau tulis gaya sendiri..."></textarea>
 
         <h2>5. Output</h2>
         <p>Hasil akhirnya mau berbentuk apa?</p>
