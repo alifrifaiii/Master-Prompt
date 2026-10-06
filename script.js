@@ -30,3 +30,8 @@ INSTRUKSI:
 
     document.getElementById("hasil").value = prompt;
 }
+function copyPrompt() {
+    let hasil = document.getElementById("hasil");
+    navigator.clipboard.writeText(hasil.value);
+    alert("Prompt berhasil disalin! 🚀");
+}
