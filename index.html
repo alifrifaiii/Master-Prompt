@@ -9,7 +9,34 @@
     <h1>Master Prompt</h1>
     <p>Bikin prompt lebih gampang.</p>
 
-    <button>Mulai</button>
+    <button onclick="mulai()">Mulai</button>
+
+    <div id="form" style="display:none;">
+        <h2>Lu mau bikin prompt untuk apa?</h2>
+
+        <input 
+            id="tujuan" 
+            type="text" 
+            placeholder="Contoh: bikin script YouTube"
+        >
+
+        <button onclick="buatPrompt()">Buat Prompt</button>
+
+        <p id="hasil"></p>
+    </div>
+
+    <script>
+        function mulai() {
+            document.getElementById("form").style.display = "block";
+        }
+
+        function buatPrompt() {
+            let tujuan = document.getElementById("tujuan").value;
+
+            document.getElementById("hasil").innerText =
+                "Tujuan kamu: " + tujuan;
+        }
+    </script>
 
 </body>
 </html>
