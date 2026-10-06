@@ -1,3 +1,4 @@
+let gayaDipilih = [];
 function mulai() {
     document.getElementById("form").style.display = "block";
 }
@@ -41,5 +42,10 @@ function copyPrompt() {
 }
 
 function pilihGaya(gaya) {
-    document.getElementById("gaya").value = gaya;
+    if (gayaDipilih.includes(gaya)) {
+        gayaDipilih = gayaDipilih.filter(item => item !== gaya);
+    } else {
+        gayaDipilih.push(gaya);
+    }
+    document.getElementById("gaya").value = gayaDipilih.join(", ");
 }
